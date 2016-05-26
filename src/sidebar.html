@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <base target="_top">
+  <link rel="stylesheet" href="https://ssl.gstatic.com/docs/script/css/add-ons1.css">
+</head>
+
+<body>
+  <div class="sidebar">
+    <div class="block">
+      <label for="checkbox1">From:</label>
+      <input type="date" id="txtDate" checked>
+    </div>
+    <div class="block">
+      <label for="checkbox1">Count:</label>
+      <input type="number" id="txtCount" min="30" max="150" step="30" value="30">
+    </div>
+    <div class="block">
+      <input type="checkbox" id="isCurrent" checked>
+      <label for="checkbox1">On the current sheet</label>
+    </div>
+    <div class="block">
+      <button id="btnReport">Create a report</button>
+    </div>
+  </div>
+  <script>
+    var btnReport = document.getElementById('btnReport');
+    var txtDate = document.getElementById('txtDate');
+    var isCurrent = document.getElementById('isCurrent');
+    var txtCount = document.getElementById('txtCount');
+    
+    
+    
+    btnReport.addEventListener('click', function(event) {
+      //console.log(typeof txtDate.value, txtDate.valueAsDate);
+      google.script.run.createReport(txtDate.value, txtCount.value, isCurrent.checked);
+    });
+  </script>
+</body>
+
+</html>
